@@ -1,0 +1,246 @@
+:root {
+  --spacing-unit: 8px;
+  --color-primary: #007bff;
+  --color-secondary: #6c757d;
+  --color-background: #f8f9fa;
+  --color-text: #212529;
+  --color-message-bg: #ffffff;
+  --color-message-border: #e0e0e0;
+  --color-disciplina-bg: #ffffff;
+  --color-disciplina-border: #e0e0e0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: calc(var(--spacing-unit) * 2);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: calc(var(--spacing-unit) * 2);
+  align-items: center;
+  background-color: var(--color-primary);
+  color: white;
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: calc(var(--spacing-unit) / 2);
+  position: sticky; /* Torna o header sticky */
+  top: 0; /* Fixa o header no topo da página */
+  z-index: 1000; /* Garante que o header fique acima dos outros elementos */
+}
+
+.icon,
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: calc(var(--spacing-unit) * 1);
+  border-radius: calc(var(--spacing-unit) / 2);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 2);
+  margin-top: calc(var(--spacing-unit) * 2);
+  margin-bottom: calc(
+    var(--spacing-unit) * 2
+  ); /* Adiciona margem inferior para o footer */
+}
+
+.mensagens {
+  background-color: var(--color-message-bg);
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: calc(var(--spacing-unit) / 2);
+  box-shadow: 0 calc(var(--spacing-unit) / 2) calc(var(--spacing-unit))
+    rgba(0, 0, 0, 0.1);
+}
+
+.mensagens h1 {
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  font-size: 1.5em;
+}
+
+.mensagens h1 span {
+  color: var(--color-primary);
+}
+
+.mensagem {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--spacing-unit) * 2);
+  padding: calc(var(--spacing-unit) * 2);
+  border-bottom: 1px solid var(--color-message-border);
+}
+
+.mensagem:last-child {
+  border-bottom: none;
+}
+
+.msg-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.msg-content {
+  flex: 1;
+}
+
+.msg-content p {
+  margin: 0;
+  font-size: 0.9em;
+  color: var(--color-text);
+}
+
+.msg-content span {
+  display: block;
+  font-size: 0.8em;
+  color: var(--color-secondary);
+  margin-top: calc(var(--spacing-unit) / 2);
+}
+
+.disciplinas {
+  background-color: var(--color-disciplina-bg);
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: calc(var(--spacing-unit) / 2);
+  box-shadow: 0 calc(var(--spacing-unit) / 2) calc(var(--spacing-unit))
+    rgba(0, 0, 0, 0.1);
+}
+
+.disciplina {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--spacing-unit) * 2);
+  border-bottom: 1px solid var(--color-disciplina-border);
+}
+
+.disciplina:last-child {
+  border-bottom: none;
+}
+
+.disciplina-left h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: var(--color-primary);
+}
+
+.disciplina-left p {
+  margin: 0;
+  font-size: 0.9em;
+  color: var(--color-secondary);
+}
+
+.disciplina-right {
+  display: flex;
+  gap: calc(var(--spacing-unit) * 2);
+}
+
+.disciplina-right .disciplina-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.noticias {
+  background-color: white;
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: calc(var(--spacing-unit) / 2);
+  box-shadow: 0 calc(var(--spacing-unit) / 2) calc(var(--spacing-unit))
+    rgba(0, 0, 0, 0.1);
+  min-height: 35vh;
+}
+
+.footer {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: calc(var(--spacing-unit) / 2);
+  position: sticky; /* Torna o footer sticky */
+  bottom: 0; /* Fixa o footer na parte inferior da página */
+  z-index: 1000; /* Garante que o footer fique acima dos outros elementos */
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    flex-direction: row;
+  }
+
+  .mensagens {
+    flex: 1;
+  }
+
+  .disciplinas {
+    flex: 2;
+  }
+
+  .noticias {
+    flex: 1;
+  }
+}
+
+.welcome-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-primary);
+  color: white;
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: calc(var(--spacing-unit) / 2);
+  box-shadow: 0 calc(var(--spacing-unit) / 2) calc(var(--spacing-unit))
+    rgba(0, 0, 0, 0.1);
+  z-index: 2000; /* Garante que a mensagem fique acima de tudo */
+  display: none; /* Inicialmente oculta */
+}
+
+.welcome-message p {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.welcome-message button {
+  background-color: white;
+  color: var(--color-primary);
+  border: none;
+  padding: calc(var(--spacing-unit) / 2) calc(var(--spacing-unit) * 2);
+  border-radius: calc(var(--spacing-unit) / 2);
+  margin-top: calc(var(--spacing-unit) * 2);
+  cursor: pointer;
+}
+
+.welcome-message button:hover {
+  background-color: #f0f0f0;
+}
