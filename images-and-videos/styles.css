@@ -280,6 +280,98 @@ body {
 
 .noticias {
   min-height: 35vh;
+  padding: 0 !important; /* Remove o padding padrão */
+}
+
+.noticia-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 35vh;
+  background-size: cover;
+  background-position: center;
+  border-radius: calc(var(--spacing-unit));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: background-image 0.3s ease;
+}
+
+.noticia-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: calc(var(--spacing-unit) * 2);
+  background: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  z-index: 1;
+}
+
+.evento-header {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit));
+}
+
+.evento-tipo {
+  display: inline-block;
+  padding: calc(var(--spacing-unit) / 2) calc(var(--spacing-unit));
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: calc(var(--spacing-unit) * 2);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  width: fit-content;
+}
+
+.evento-header h2 {
+  margin: 0;
+  font-size: 1.4em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.evento-header p {
+  margin: 0;
+  font-size: 0.9em;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.noticia-nav {
+  position: absolute;
+  bottom: calc(var(--spacing-unit) * 2);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: calc(var(--spacing-unit) * 2);
+  z-index: 2;
+}
+
+.nav-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
 }
 
 .footer {
@@ -407,4 +499,10 @@ input:checked + .switch-track .switch-thumb {
 .theme-switch:hover .switch-track {
   background-color: var(--md-sys-color-surface-container-highest);
   opacity: 0.8;
+}
+
+.evento-info {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit));
 }

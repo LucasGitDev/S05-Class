@@ -14,7 +14,11 @@ const aulas = [
         descricao: "Aula sobre cores, tipografia e icones",
         link: "colors-typography-and-icons"
     },
-    // Adicione mais aulas conforme necessário
+    {
+        titulo: "Imagens e Videos",
+        descricao: "Aula sobre imagens e videos",
+        link: "images-and-videos"
+    },
 ];
 
 function criarCardAula(aula) {
