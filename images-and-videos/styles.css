@@ -152,6 +152,18 @@ body {
   border-radius: calc(var(--spacing-unit) / 2);
 }
 
+.logo-img {
+  @media (min-width: 768px) {
+    width: 10vw;
+    height: 2vw;
+  }
+
+  @media (max-width: 768px) {
+    width: 10vw;
+    height: 6vw;
+  }
+}
+
 .main-content {
   display: flex;
   flex-direction: column;
