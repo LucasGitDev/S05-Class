@@ -51,18 +51,8 @@ const eventos = [
 
 document.addEventListener("DOMContentLoaded", () => {
   const SECONDS_TO_NEXT_CAROUSEL = 5;
+  let currentIndex = 0;
   let carouselTimerRef;
-
-  function startCarouselTimer() {
-    carouselTimerRef = setInterval(() => {
-      nextEvent();
-    }, SECONDS_TO_NEXT_CAROUSEL * 1000);
-  }
-
-  function resetCarouselTimer() {
-    clearInterval(carouselTimerRef);
-    startCarouselTimer();
-  }
 
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.querySelector(".theme-icon");
@@ -85,68 +75,91 @@ document.addEventListener("DOMContentLoaded", () => {
     themeIcon.textContent = isDark ? "🌙" : "☀️";
   }
 
-  let currentEventIndex = 0;
-  const noticiaCard = document.querySelector(".noticia-card");
-  const noticiaTitle = noticiaCard.querySelector("h2");
-  const noticiaSubtitle = noticiaCard.querySelector("p");
-  const tipoSpan = noticiaCard.querySelector(".evento-tipo");
+  const carouselTrack = document.querySelector(".carousel-track");
   const prevBtn = document.querySelector(".nav-btn.prev");
   const nextBtn = document.querySelector(".nav-btn.next");
 
-  if (
-    !noticiaCard ||
-    !noticiaTitle ||
-    !noticiaSubtitle ||
-    !tipoSpan ||
-    !prevBtn ||
-    !nextBtn
-  ) {
-    console.error("Elementos do carrossel não encontrados");
-    return;
+  // Criar e adicionar todos os cards de eventos
+  function createEventCards() {
+    eventos.forEach((evento, index) => {
+      const card = document.createElement("div");
+      card.className = `noticia-card ${index === 0 ? "active" : ""}`;
+      card.style.backgroundImage = `url('${evento.image}')`;
+
+      card.innerHTML = `
+        <div class="noticia-content">
+          <div class="evento-info">
+            <div class="evento-header">
+              <span class="evento-tipo">${evento.type.toUpperCase()}</span>
+              <h2>${evento.title}</h2>
+              <p>${evento.date} às ${evento.time} - ${evento.location}</p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      carouselTrack.appendChild(card);
+    });
   }
 
-  function updateEventDisplay() {
-    const evento = eventos[currentEventIndex];
-    noticiaCard.style.backgroundImage = `url('${evento.image}')`;
-    tipoSpan.textContent = evento.type.toUpperCase();
-    noticiaTitle.textContent = evento.title;
-    noticiaSubtitle.textContent = `${evento.date} às ${evento.time} - ${evento.location}`;
+  function updateCarousel() {
+    carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    // Atualiza as classes active
+    document.querySelectorAll(".noticia-card").forEach((card, index) => {
+      if (index === currentIndex) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+    });
   }
 
-  function nextEvent() {
-    currentEventIndex = (currentEventIndex + 1) % eventos.length;
-    updateEventDisplay();
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % eventos.length;
+    updateCarousel();
     resetCarouselTimer();
   }
 
-  function prevEvent() {
-    currentEventIndex =
-      (currentEventIndex - 1 + eventos.length) % eventos.length;
-    updateEventDisplay();
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + eventos.length) % eventos.length;
+    updateCarousel();
     resetCarouselTimer();
   }
 
+  function startCarouselTimer() {
+    carouselTimerRef = setInterval(nextSlide, SECONDS_TO_NEXT_CAROUSEL * 1000);
+  }
+
+  function resetCarouselTimer() {
+    clearInterval(carouselTimerRef);
+    startCarouselTimer();
+  }
+
+  // Event Listeners
   prevBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    prevEvent();
+    prevSlide();
   });
 
   nextBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    nextEvent();
+    nextSlide();
   });
 
-  updateEventDisplay();
+  // Adicionar efeito de hover para pausar o carrossel
+  const carouselContainer = document.querySelector(".carousel-container");
+
+  carouselContainer.addEventListener("mouseenter", () => {
+    clearInterval(carouselTimerRef);
+  });
+
+  carouselContainer.addEventListener("mouseleave", () => {
+    startCarouselTimer();
+  });
+
+  // Inicialização
+  createEventCards();
+  updateCarousel();
   startCarouselTimer();
-  // console.log('Carrossel inicializado', {
-  //     totalEventos: eventos.length,
-  //     elementosEncontrados: {
-  //         noticiaCard: !!noticiaCard,
-  //         noticiaTitle: !!noticiaTitle,
-  //         noticiaSubtitle: !!noticiaSubtitle,
-  //         tipoSpan: !!tipoSpan,
-  //         prevBtn: !!prevBtn,
-  //         nextBtn: !!nextBtn
-  //     }
-  // });
 });
