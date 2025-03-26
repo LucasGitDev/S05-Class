@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Inatel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body class="light">
+    <div class="container">
+      <header class="header">
+        <div class="icon">
+          <span class="material-symbols-outlined"> menu </span>
+        </div>
+        <div class="logo">
+          <img
+            src="assets/logo.svg"
+            class="logo-img"
+            alt="Logo"
+            style="filter: invert(100%)"
+          />
+        </div>
+        <label class="theme-switch">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="switch-track">
+            <span class="switch-thumb">
+              <span class="theme-icon">☀️</span>
+            </span>
+          </span>
+        </label>
+      </header>
+      <main class="main-content">
+        <section class="mensagens">
+          <h1>Olá, <span>Raphael</span></h1>
+          <div class="mensagem">
+            <div class="msg-icon">
+              <span class="material-symbols-outlined"> key </span>
+            </div>
+            <div class="msg-content">
+              <p>Você possui um armário reservado com entrega para hoje.</p>
+              <span>12:00</span>
+            </div>
+          </div>
+
+          <div class="mensagem">
+            <div class="msg-icon">
+              <span class="material-symbols-outlined"> payments </span>
+            </div>
+            <div class="msg-content">
+              <p>Você possui uma pendência no financeiro.</p>
+              <span>12:00</span>
+            </div>
+          </div>
+        </section>
+        <section class="disciplinas">
+          <div class="disciplina">
+            <div class="disciplina-left">
+              <h2>Disciplina</h2>
+              <p>Sala e Horário</p>
+            </div>
+            <div class="disciplina-right">
+              <div class="disciplina-icon">
+                <span class="material-symbols-outlined"> school </span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="noticias">
+          <div class="carousel-container">
+            <div class="carousel-track">
+              <!-- Os cards serão inseridos aqui via JavaScript -->
+            </div>
+            <div class="noticia-nav">
+              <button class="nav-btn prev" aria-label="Evento anterior">
+                <span class="material-symbols-outlined">chevron_left</span>
+              </button>
+              <button class="nav-btn next" aria-label="Próximo evento">
+                <span class="material-symbols-outlined">chevron_right</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <nav class="footer-nav">
+          <a href="#">mensagens</a>
+          <a href="#">aulas</a>
+          <a href="#">materiais</a>
+        </nav>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
