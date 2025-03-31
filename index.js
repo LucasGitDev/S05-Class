@@ -25,6 +25,11 @@ const aulas = [
     descricao: "Aula sobre interação e animações",
     link: "interaction-and-animation",
   },
+  {
+    titulo: "Componentes e Formulários",
+    descricao: "Aula sobre componentes e formulários",
+    link: "components-and-forms",
+  },
 ];
 
 function criarCardAula(aula) {
