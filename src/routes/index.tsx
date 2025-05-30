@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
+import logo from "../assets/logo-inatel.svg";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
 import { Input } from "../components/ui/input";
@@ -28,7 +29,7 @@ function RouteComponent() {
           <div className="flex justify-center">
             <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center">
               <img
-                src="/logo-inatel.svg"
+                src={logo}
                 alt="Inatel"
                 width={60}
                 height={60}

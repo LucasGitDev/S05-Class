@@ -16,6 +16,7 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 
+import logo from "../assets/logo-inatel.svg";
 interface NavItem {
   label: string;
   href: string;
@@ -171,7 +172,7 @@ export function MainDrawer() {
           <SheetTitle className="flex items-center gap-2">
             <div className="w-10 h-10 bg-blue-600 dark:bg-blue-700 rounded-full flex items-center justify-center">
               <img
-                src="/logo-inatel.svg"
+                src={logo}
                 alt="Inatel"
                 width={24}
                 height={24}
