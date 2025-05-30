@@ -1,3 +1,10 @@
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import logo from "../assets/logo-inatel.svg";
@@ -48,18 +55,62 @@ function RouteComponent() {
           </div>
         </CardHeader>
 
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-6 p-6">
           <div className="space-y-4">
             <div>
               <label className="text-sm text-gray-600 mb-2 block">Curso</label>
-              <Input placeholder="Selecione seu curso" className="h-12" />
+              <Select>
+                <div className="border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                  <SelectTrigger className="px-3 py-2 text-sm">
+                    <SelectValue placeholder="Selecione seu curso" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[200px] overflow-y-auto bg-white border border-gray-300 rounded-md shadow-sm">
+                    <SelectItem
+                      value="engenharia-de-software"
+                      className="px-3 py-2 hover:bg-gray-100"
+                    >
+                      Engenharia de Software
+                    </SelectItem>
+                    <SelectItem
+                      value="engenharia-de-computacao"
+                      className="px-3 py-2 hover:bg-gray-100"
+                    >
+                      Engenharia de Computação
+                    </SelectItem>
+                    <SelectItem
+                      value="telecom"
+                      className="px-3 py-2 hover:bg-gray-100"
+                    >
+                      Engenharia de Telecomunicações
+                    </SelectItem>
+                    <SelectItem
+                      value="eletrica"
+                      className="px-3 py-2 hover:bg-gray-100"
+                    >
+                      Engenharia Elétrica
+                    </SelectItem>
+                    <SelectItem
+                      value="producao"
+                      className="px-3 py-2 hover:bg-gray-100"
+                    >
+                      Engenharia de Produção
+                    </SelectItem>
+                    <SelectItem
+                      value="biomedica"
+                      className="px-3 py-2 hover:bg-gray-100"
+                    >
+                      Engenharia Biomédica
+                    </SelectItem>
+                  </SelectContent>
+                </div>
+              </Select>
             </div>
 
             <div>
               <label className="text-sm text-gray-600 mb-2 block">
                 Matrícula
               </label>
-              <Input placeholder="Digite sua matrícula" className="h-12" />
+              <Input placeholder="Digite sua matrícula" className="h-10" />
             </div>
 
             <div>
@@ -67,7 +118,7 @@ function RouteComponent() {
               <Input
                 type="password"
                 placeholder="Digite sua senha"
-                className="h-12"
+                className="h-10"
               />
             </div>
           </div>
@@ -89,7 +140,7 @@ function RouteComponent() {
           <Separator />
 
           <div className="text-center text-xs text-gray-500">
-            Inatel App v2.0 - Desenvolvido por estudantes
+            Inatel App v2.0 - Desenvolvido por Teles
           </div>
         </CardContent>
       </Card>

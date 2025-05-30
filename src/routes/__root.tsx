@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import * as React from "react";
 import { Toaster } from "../components/ui/toaster";
@@ -10,8 +11,10 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <React.Fragment>
-      <Outlet />
-      <Toaster />
+      <ThemeProvider storageKey="vite-ui-theme" defaultTheme="light">
+        <Outlet />
+        <Toaster />
+      </ThemeProvider>
     </React.Fragment>
   );
 }
